@@ -1,42 +1,63 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --main-color: #101828;
+  --text-color: #475467;
+  --gray-color: #6c717b;
+  --btn-color: #e44848;
+  --btn-hover-color: #d84343;
+  --rating-color: #ffc531;
+  --gray-light-color: #dadde1;
+  --badges-color: #f2f4f7;
+  --inputs-color: #f7f7f7;
+  --white-color: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--main-color);
+  background: var(--white-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 a {
-  color: inherit;
+  color: currentColor;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 15px;
 }
