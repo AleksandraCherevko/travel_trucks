@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  background-color: var(--inputs-color);
+}
+
+.headerContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.headerNav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.headerNavList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.headerNavLink {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.headerNavLink:hover,
+.headerNavLink:focus {
+  color: var(--btn-hover-color);
+}
