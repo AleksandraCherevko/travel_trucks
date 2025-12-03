@@ -1,0 +1,112 @@
+.camperListItem {
+  padding: 24px;
+  border: 1px solid var(--gray-light-color);
+  border-radius: 20px;
+}
+
+.camperListItemWrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.camperListTextWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.camperListImg {
+  border-radius: 10px;
+}
+
+.camperListName {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.camperListPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+}
+.ratingIcon {
+  margin-right: 4px;
+}
+.camperListNamePriceWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.camperListRating {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.camperListReviews {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.camperListRatingReviewsWrapper {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.camperListRatingReviewsWrapper:hover,
+.camperListRatingReviewsWrapper:focus {
+  text-decoration: underline;
+}
+
+.camperListLocation {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.camperListLocationWrapper {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  align-content: center;
+}
+
+.camperListAfterTitle {
+  margin-top: 8px;
+  display: flex;
+  gap: 16px;
+}
+
+.camperListDescription {
+  margin-top: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+.camperListBtn {
+  margin-top: 24px;
+  padding: 16px 40px;
+  text-align: center;
+  display: inline-block;
+  width: 166px;
+  white-space: nowrap;
+}
+
+.camperListAmenities {
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.amenity {
+  display: flex;
+  padding: 12px 18px;
+  background-color: var(--badges-color);
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
