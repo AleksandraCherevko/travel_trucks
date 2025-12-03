@@ -18,7 +18,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+.basicBtn {
+  padding: 16px 48.5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--white-color);
+  background-color: var(--btn-color);
+  border-radius: 200px;
+  border: none;
+}
 
+.basicBtn:hover,
+.basicBtn:focus {
+  background-color: var(--btn-hover-color);
+}
 body {
   color: var(--main-color);
   background: var(--white-color);
@@ -55,5 +69,3 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-
