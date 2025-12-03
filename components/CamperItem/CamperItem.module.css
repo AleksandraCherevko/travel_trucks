@@ -29,6 +29,20 @@
   font-size: 24px;
   line-height: 1.33;
 }
+
+.favoriteBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.favoriteBtn:hover,
+.favoriteBtn:focus {
+  fill: var(--btn-color);
+}
+
+.favoriteBtn.active {
+  fill: var(--btn-color);
+}
 .ratingIcon {
   margin-right: 4px;
 }
