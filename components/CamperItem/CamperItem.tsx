@@ -1,14 +1,24 @@
+"use client";
 import { Camper } from "@/lib/api";
 import Link from "next/link";
 import Image from "next/image";
 import css from "./CamperItem.module.css";
 import { amenities } from "@/lib/amenities";
+import { useEffect } from "react";
+import { useCamperStore } from "@/lib/store";
 
 type Props = {
   item: Camper;
 };
 
 const CamperItem = ({ item }: Props) => {
+  const { favorites, toggleFavorite, loadFavorites } = useCamperStore();
+
+  useEffect(() => {
+    loadFavorites();
+  }, []);
+
+  const isFavorite = favorites.includes(item.id);
   return (
     <li className={css.camperListItem}>
       <div className={css.camperListItemWrapper}>
@@ -23,6 +33,17 @@ const CamperItem = ({ item }: Props) => {
           <div className={css.camperListNamePriceWrapper}>
             <p className={css.camperListName}>{item.name}</p>
             <p className={css.camperListPrice}>€{Math.round(item.price)}</p>
+            <button
+              className={`${css.favoriteBtn} ${isFavorite ? css.active : ""}`}
+              onClick={() => toggleFavorite(item.id)}
+              aria-label={
+                isFavorite ? "Remove from favorites" : "Add to favorites"
+              }
+            >
+              <svg width={25} height={24}>
+                <use href="/symbol-defs.svg#icon-heart"></use>
+              </svg>
+            </button>
           </div>
           <div className={css.camperListAfterTitle}>
             <div className={css.camperListRatingReviewsWrapper}>
