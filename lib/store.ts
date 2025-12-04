@@ -65,37 +65,62 @@ export const useCamperStore = create<CamperStore>((set, get) => ({
     get().fetchCampers(true);
   },
 
-  fetchCampers: async (reset = false) => {
-    const { page, limit, filters } = get();
-    set({ loading: true });
+  // fetchCampers: async (reset = false) => {
+  //   const { page, limit, filters } = get();
+  //   set({ loading: true });
 
-    const preparedFilters: Record<string, string> = {
-      ...(filters.location ? { location: filters.location } : {}),
-      ...(filters.type ? { type: filters.type } : {}),
-      ...(filters.features.length
-        ? { features: filters.features.join(",") }
-        : {}),
-    };
-    const params = new URLSearchParams({
-      page: reset ? "1" : String(page),
-      limit: String(limit),
-      ...preparedFilters,
+  //   const preparedFilters: Record<string, string> = {
+  //     ...(filters.location ? { location: filters.location } : {}),
+  //     ...(filters.type ? { type: filters.type } : {}),
+  //     ...(filters.features.length
+  //       ? { features: filters.features.join(",") }
+  //       : {}),
+  //   };
+
+  //   const currentPage = reset ? 1 : page;
+
+  //   try {
+  //     const items = await getCampers(currentPage, limit, preparedFilters);
+  //     set({
+  //       campers: reset ? items : [...get().campers, ...items],
+  //       page: reset ? 2 : page + 1,
+  //       hasMore: items.length === limit,
+  //       loading: false,
+  //     });
+  //   } catch (e) {
+  //     set({ loading: false });
+  //     throw e;
+  //   }
+  // },
+
+  fetchCampers: async (reset = false) => {
+    const { filters, campers, page, limit } = get();
+
+    const params = new URLSearchParams();
+
+    if (filters.type) params.append("form", filters.type);
+    if (filters.location) params.append("location", filters.location);
+
+    filters.features.forEach((feature) => {
+      params.append(`amenities[${feature}]`, "true");
     });
 
-    
+    params.append("page", reset ? "1" : page.toString());
+    params.append("limit", limit.toString());
+
     const res = await fetch(
-      `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers?${params}`
+      `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers?${params.toString()}`
     );
 
     const data = await res.json();
 
-    const items = data.items || data;
+    // ⚠️ MockAPI повертає МАСИВ
+    const newCampers = Array.isArray(data) ? data : data.items || [];
 
     set({
-      campers: reset ? items : [...get().campers, ...items],
+      campers: reset ? newCampers : [...campers, ...newCampers],
       page: reset ? 2 : page + 1,
-      hasMore: items.length === limit,
-      loading: false,
+      hasMore: newCampers.length === limit,
     });
   },
 
