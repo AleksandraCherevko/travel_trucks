@@ -9,9 +9,15 @@ interface CamperStore {
   limit: number;
   hasMore: boolean;
   loading: boolean;
-  filters: Record<string, string>;
 
-  setFilters: (filters: Record<string, string>) => void;
+  filters: {
+    location?: string;
+    type?: string;
+    features: string[];
+  };
+
+  setFilters: (filters: Partial<CamperStore["filters"]>) => void;
+  toggleFeature: (feature: string) => void;
   fetchCampers: (reset?: boolean) => Promise<void>;
 
   setCampers: (campers: Camper[]) => void;
@@ -27,15 +33,35 @@ export const useCamperStore = create<CamperStore>((set, get) => ({
   limit: 4,
   hasMore: true,
   loading: false,
-  filters: {},
+  filters: {
+    location: "",
+    type: "",
+    features: [],
+  },
 
-  setFilters: (filters) => {
+  setFilters: (newFilters) => {
+    set((state) => ({
+      filters: { ...state.filters, ...newFilters },
+      page: 1,
+      campers: [],
+      hasMore: true,
+    }));
+    get().fetchCampers(true);
+  },
+
+  toggleFeature: (feature) => {
+    const { features } = get().filters;
+    const updated = features.includes(feature)
+      ? features.filter((f) => f !== feature)
+      : [...features, feature];
+
     set({
-      filters,
+      filters: { ...get().filters, features: updated },
       page: 1,
       campers: [],
       hasMore: true,
     });
+
     get().fetchCampers(true);
   },
 
@@ -43,12 +69,20 @@ export const useCamperStore = create<CamperStore>((set, get) => ({
     const { page, limit, filters } = get();
     set({ loading: true });
 
+    const preparedFilters: Record<string, string> = {
+      ...(filters.location ? { location: filters.location } : {}),
+      ...(filters.type ? { type: filters.type } : {}),
+      ...(filters.features.length
+        ? { features: filters.features.join(",") }
+        : {}),
+    };
     const params = new URLSearchParams({
       page: reset ? "1" : String(page),
       limit: String(limit),
-      ...filters,
+      ...preparedFilters,
     });
 
+    
     const res = await fetch(
       `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers?${params}`
     );
