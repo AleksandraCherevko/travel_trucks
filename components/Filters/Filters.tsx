@@ -18,7 +18,7 @@ type FiltersProps = {
 
 export default function Filters({
   onChange,
-  onClearAll,
+  // onClearAll,
   filters,
 }: FiltersProps) {
   const [location, setLocation] = useState(filters.location || "");
@@ -37,12 +37,12 @@ export default function Filters({
     onChange({ location, type, features });
   };
 
-  const handleClearAll = () => {
-    setLocation("");
-    setType("");
-    setFeatures([]);
-    onClearAll();
-  };
+  // const handleClearAll = () => {
+  //   setLocation("");
+  //   setType("");
+  //   setFeatures([]);
+  //   onClearAll();
+  // };
 
   return (
     <div className={css.filtersWrapper}>
