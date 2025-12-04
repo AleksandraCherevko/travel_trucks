@@ -40,14 +40,18 @@ export type CampersListResponse = {
 
 axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 
-export const getCampers = async (page = 1, limit = 4, filters = {}) => {
+export const getCampers = async (
+  page = 1,
+  limit = 4,
+  filters: Record<string, string> = {}
+): Promise<Camper[]> => {
   const params = new URLSearchParams({
     page: String(page),
     limit: String(limit),
     ...filters,
   });
 
-  const res = await axios.get<CampersListResponse>(`/campers?${params}`);
+  const res = await axios.get<Camper[]>(`/campers?${params.toString()}`);
   return res.data;
 };
 

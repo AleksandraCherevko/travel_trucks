@@ -12,11 +12,7 @@ type Props = {
 };
 
 const CamperItem = ({ item }: Props) => {
-  const { favorites, toggleFavorite, loadFavorites } = useCamperStore();
-
-  useEffect(() => {
-    loadFavorites();
-  }, []);
+  const { favorites, toggleFavorite } = useCamperStore();
 
   const isFavorite = favorites.includes(item.id);
   return (
@@ -32,7 +28,7 @@ const CamperItem = ({ item }: Props) => {
         <div className={css.camperListTextWrapper}>
           <div className={css.camperListNamePriceWrapper}>
             <p className={css.camperListName}>{item.name}</p>
-            <p className={css.camperListPrice}>€{Math.round(item.price)}</p>
+            <p className={css.camperListPrice}>€{item.price.toFixed(2)}</p>
             <button
               className={`${css.favoriteBtn} ${isFavorite ? css.active : ""}`}
               onClick={() => toggleFavorite(item.id)}

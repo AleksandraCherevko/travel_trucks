@@ -24,17 +24,34 @@ import css from "./page.module.css";
 import Filters from "@/components/Filters/Filters";
 
 export default function CatalogPage() {
-  const { campers, fetchCampers, hasMore, loading } = useCamperStore();
+  const {
+    campers,
+    fetchCampers,
+    hasMore,
+    loading,
+    filters,
+    setFilters,
+    loadFavorites,
+  } = useCamperStore();
 
   useEffect(() => {
+    loadFavorites();
     fetchCampers(true);
-  }, [fetchCampers]);
+  }, []);
+
+  const handleFiltersChange = (updatedFilters: any) => {
+    setFilters(updatedFilters);
+  };
 
   return (
     <Container>
       <div className={css.catalogPage}>
         <div>
-          <Filters />
+          <Filters
+            filters={filters}
+            onChange={handleFiltersChange}
+            onClearAll={() => setFilters({})}
+          />
         </div>
         <div className={css.catalogCardsWrapper}>
           <CamperList campers={campers} />

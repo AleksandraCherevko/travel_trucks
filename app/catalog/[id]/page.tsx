@@ -7,11 +7,11 @@ import {
 import CamperDetailsClient from "./CamperDetails.client";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 const CamperDetails = async ({ params }: Props) => {
-  const { id } = await params;
+  const { id } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["camper", id],

@@ -5,7 +5,8 @@ import { useParams } from "next/navigation";
 import { getSingleCamper } from "@/lib/api";
 
 const CamperDetailsClient = () => {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id;
 
   const {
     data: camper,
@@ -13,7 +14,11 @@ const CamperDetailsClient = () => {
     error,
   } = useQuery({
     queryKey: ["camper", id],
-    queryFn: () => getSingleCamper(id),
+    queryFn: () => {
+      if (!id) return Promise.reject(new Error("No id"));
+      return getSingleCamper(id);
+    },
+    enabled: !!id,
     refetchOnMount: false,
   });
 
