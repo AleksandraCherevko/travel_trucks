@@ -23,6 +23,11 @@ import Container from "@/components/Container/Container";
 import css from "./page.module.css";
 import Filters from "@/components/Filters/Filters";
 
+type FiltersType = {
+  location?: string;
+  type?: string;
+  features: string[];
+};
 export default function CatalogPage() {
   const {
     campers,
@@ -39,7 +44,7 @@ export default function CatalogPage() {
     fetchCampers(true);
   }, []);
 
-  const handleFiltersChange = (updatedFilters: any) => {
+  const handleFiltersChange = (updatedFilters: FiltersType) => {
     setFilters(updatedFilters);
   };
 
