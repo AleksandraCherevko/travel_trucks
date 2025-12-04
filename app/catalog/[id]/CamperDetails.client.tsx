@@ -6,7 +6,7 @@ import { getSingleCamper } from "@/lib/api";
 
 const CamperDetailsClient = () => {
   const params = useParams();
-  const id = params?.id;
+  const { id } = useParams;
 
   const {
     data: camper,
@@ -15,7 +15,8 @@ const CamperDetailsClient = () => {
   } = useQuery({
     queryKey: ["camper", id],
     queryFn: () => {
-      if (!id) return Promise.reject(new Error("No id"));
+      if (!id || Array.isArray(id)) throw new Error("Invalid id");
+
       return getSingleCamper(id);
     },
     enabled: !!id,
