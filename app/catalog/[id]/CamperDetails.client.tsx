@@ -48,22 +48,24 @@ import { useParams } from "next/navigation";
 import { getSingleCamper } from "@/lib/api";
 
 const CamperDetailsClient = () => {
-  const { id } = useParams(); // вызов функции useParams()
+  const params = useParams(); // вызов функции useParams()
 
-  // если id массив — берем первый элемент
-  const safeId = Array.isArray(id) ? id[0] : id;
+  let id = params?.id;
+
+  // Если id — массив, берем первый элемент
+  if (Array.isArray(id)) id = id[0];
 
   const {
     data: camper,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["camper", safeId],
+    queryKey: ["camper", id],
     queryFn: () => {
-      if (!safeId) throw new Error("Invalid id");
-      return getSingleCamper(safeId);
+      if (!id) throw new Error("Invalid id");
+      return getSingleCamper(id);
     },
-    enabled: !!safeId,
+    enabled: !!id,
     refetchOnMount: false,
   });
 
