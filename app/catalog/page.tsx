@@ -21,6 +21,7 @@ import { useCamperStore } from "@/lib/store";
 import CamperList from "@/components/CamperList/CamperList";
 import Container from "@/components/Container/Container";
 import css from "./page.module.css";
+import Filters from "@/components/Filters/Filters";
 
 export default function CatalogPage() {
   const { campers, fetchCampers, hasMore, loading } = useCamperStore();
@@ -33,7 +34,7 @@ export default function CatalogPage() {
     <Container>
       <div className={css.catalogPage}>
         <div>
-          <p>Filter</p>
+          <Filters />
         </div>
         <div className={css.catalogCardsWrapper}>
           <CamperList campers={campers} />
