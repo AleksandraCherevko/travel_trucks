@@ -16,11 +16,7 @@ type FiltersProps = {
   };
 };
 
-export default function Filters({
-  onChange,
-  // onClearAll,
-  filters,
-}: FiltersProps) {
+export default function Filters({ onChange, filters }: FiltersProps) {
   const [location, setLocation] = useState(filters.location || "");
   const [type, setType] = useState(filters.type || "");
   const [features, setFeatures] = useState<string[]>([]);
@@ -36,13 +32,6 @@ export default function Filters({
   const handleSearch = () => {
     onChange({ location, type, features });
   };
-
-  // const handleClearAll = () => {
-  //   setLocation("");
-  //   setType("");
-  //   setFeatures([]);
-  //   onClearAll();
-  // };
 
   return (
     <div className={css.filtersWrapper}>

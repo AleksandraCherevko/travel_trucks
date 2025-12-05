@@ -65,34 +65,6 @@ export const useCamperStore = create<CamperStore>((set, get) => ({
     get().fetchCampers(true);
   },
 
-  // fetchCampers: async (reset = false) => {
-  //   const { page, limit, filters } = get();
-  //   set({ loading: true });
-
-  //   const preparedFilters: Record<string, string> = {
-  //     ...(filters.location ? { location: filters.location } : {}),
-  //     ...(filters.type ? { type: filters.type } : {}),
-  //     ...(filters.features.length
-  //       ? { features: filters.features.join(",") }
-  //       : {}),
-  //   };
-
-  //   const currentPage = reset ? 1 : page;
-
-  //   try {
-  //     const items = await getCampers(currentPage, limit, preparedFilters);
-  //     set({
-  //       campers: reset ? items : [...get().campers, ...items],
-  //       page: reset ? 2 : page + 1,
-  //       hasMore: items.length === limit,
-  //       loading: false,
-  //     });
-  //   } catch (e) {
-  //     set({ loading: false });
-  //     throw e;
-  //   }
-  // },
-
   fetchCampers: async (reset = false) => {
     const { filters, campers, page, limit } = get();
 
@@ -114,7 +86,7 @@ export const useCamperStore = create<CamperStore>((set, get) => ({
 
     const data = await res.json();
 
-    // ⚠️ MockAPI повертає МАСИВ
+   
     const newCampers = Array.isArray(data) ? data : data.items || [];
 
     set({

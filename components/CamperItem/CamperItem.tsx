@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import css from "./CamperItem.module.css";
 import { amenities } from "@/lib/amenities";
-import { useEffect } from "react";
+
 import { useCamperStore } from "@/lib/store";
 
 type Props = {

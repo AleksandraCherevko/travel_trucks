@@ -1,18 +1,24 @@
 "use client";
 
+import css from "./error.module.css";
+
 type Props = {
   error: Error;
   reset: () => void;
 };
 
-const Error = ({ error, reset }: Props) => {
+const ErrorMessage = ({ error, reset }: Props) => {
   return (
-    <div>
-      <h2>Loading error</h2>
-      <p>{error.message}</p>
-      <button onClick={reset}>Try again</button>
+    <div className={css.errorWrapper}>
+      <div className={css.errorMessageCard}>
+        <h2 className={css.errorMessageTitle}>Loading error</h2>
+        <p className={css.errorMessage}>{error.message}</p>
+        <button className="basicBtn" onClick={reset}>
+          Try again
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Error;
+export default ErrorMessage;
