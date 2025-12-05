@@ -5,6 +5,7 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import CamperDetailsClient from "./CamperDetails.client";
+import { Suspense } from "react";
 
 type Props = {
   params: { id: string };
@@ -20,7 +21,9 @@ const CamperDetails = async ({ params }: Props) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <CamperDetailsClient />
+      <Suspense fallback={<Loading />}>
+        <CamperDetailsClient />
+      </Suspense>
     </HydrationBoundary>
   );
 };

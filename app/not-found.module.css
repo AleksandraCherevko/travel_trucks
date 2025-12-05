@@ -1,0 +1,32 @@
+.notFoundWrapper {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.notFoundCard {
+  background: transparent;
+  border: 1px solid var(--gray-light-color);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.notFoundTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.notFoundMessage {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5px;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
