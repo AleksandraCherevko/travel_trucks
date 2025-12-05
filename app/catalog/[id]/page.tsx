@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-query";
 import CamperDetailsClient from "./CamperDetails.client";
 import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 type Props = {
   params: { id: string };
