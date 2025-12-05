@@ -65,7 +65,18 @@ export default function Filters({ onChange, filters }: FiltersProps) {
         <div className={css.horizontalLine}></div>
 
         <div className={css.featuresWrapper}>
-          {["Ac", "Automatic", "Kitchen", "Tv", "Bathroom"].map((feature) => {
+          {[
+            "Ac",
+            "Automatic",
+            "Kitchen",
+            "Tv",
+            "Bathroom",
+            "Radio",
+            "Refrigerator",
+            "Microwave",
+            "Gas",
+            "Water",
+          ].map((feature) => {
             const isSelected = features.includes(feature);
 
             const featureIcons: { [key: string]: string } = {
@@ -74,6 +85,11 @@ export default function Filters({ onChange, filters }: FiltersProps) {
               Kitchen: "icon-cup",
               Tv: "icon-tv",
               Bathroom: "icon-shower",
+              Radio: "icon-radio",
+              Refrigerator: "icon-fridge",
+              Microwave: "icon-microwave",
+              Gas: "icon-gas",
+              Water: "icon-water",
             };
             return (
               <label

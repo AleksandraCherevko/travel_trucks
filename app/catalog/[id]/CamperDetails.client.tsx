@@ -7,6 +7,7 @@ import Image from "next/image";
 import { getSingleCamper, Camper } from "@/lib/api";
 import Loading from "@/app/loading";
 import ErrorMessage from "@/app/error";
+import BookingForm from "@/components/BookingForm/BookingForm";
 
 const CamperDetailsClient = () => {
   const params = useParams();
@@ -125,6 +126,7 @@ const CamperDetailsClient = () => {
           )}
         </div>
       )}
+      <BookingForm camper={camper} />
     </div>
   );
 };
