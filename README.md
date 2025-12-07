@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TravelTrucks
 
-## Getting Started
+TravelTrucks is a web application for renting campers. This project is the frontend part of the application, built with Next.js and TypeScript. The application allows users to browse available campers, view detailed information, read reviews, and make bookings.
 
-First, run the development server:
+The frontend uses a ready-made backend API for camper listings:
+https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
+
+Documentation is available here: https://github.com/mockapi-io/docs/wiki
+
+## Features
+
+Pages
+
+- Home Page (/): Contains a main banner with a call-to-action button "View Now" that navigates to the catalog page.
+
+- Catalog Page (/catalog):
+  - Displays all available campers.
+  - Filtering by location, camper type, and additional features (AC, kitchen, etc.).
+  - Add campers to favorites list.
+  - Load more campers with backend pagination.
+
+- Camper Details Page (/catalog/:id):
+  - Shows detailed description, photo gallery, user reviews, and booking form.
+  - Default tab: Features; switchable to Reviews.
+  - Features: transmission, engine, AC, bathroom, kitchen, TV, radio, refrigerator, microwave, gas, water.
+  - Details: form, length, width, height, tank, consumption.
+
+## Technology Stack
+
+- Framework: Next.js (App Router)
+- Language: TypeScript
+- State Management: Zustand
+- HTTP Requests: Axios
+- Styling: Any CSS library (CSS Modules, styled-components, MUI, etc.)
+- Component Approach: DRY principle applied, clean and commented code.
+
+## Routing
+
+- / – Home Page
+- /catalog – Catalog Page
+- /catalog/:id – Camper Details Page
+
+## Installation
+
+```bash
+git clone <repository-url>
+cd traveltrucks-frontend
+npm install
+```
+
+## Running Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
