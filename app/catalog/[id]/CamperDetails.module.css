@@ -242,3 +242,25 @@
   line-height: 15px;
   color: var(--text-color);
 }
+
+/* В CamperDetails.module.css */
+.camperDetailsFeautersWrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap; /* чтобы на узких экранах переносились */
+}
+
+.camperDetailsFeauters,
+.booking {
+  flex: 1 1 600px; /* одинаковая базовая ширина, растягиваются одинаково */
+  max-width: 600px; /* чтобы не растягивались больше */
+}
+
+.reviewAndBooking {
+  display: flex;
+}
+
+.react-datepicker-wrapper {
+  display: flex;
+  width: 100%;
+}
