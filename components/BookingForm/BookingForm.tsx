@@ -5,6 +5,7 @@ import { Camper } from "@/lib/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import css from "./BookingForm.module.css";
+import { enGB } from "date-fns/locale";
 
 type BookingFormProps = {
   camper: Camper;
@@ -74,8 +75,10 @@ const BookingForm = ({ camper }: BookingFormProps) => {
             id="date"
             selected={bookingDate}
             onChange={(date) => setBookingDate(date)}
+            locale={enGB}
             placeholderText="Booking date*"
             className={css.bookingInput}
+            calendarClassName={css.bookingCalendar}
           />
 
           <div>
