@@ -156,3 +156,9 @@
   color: white;
   border-radius: 50%;
 }
+
+.error {
+  color: var(--btn-color);
+  font-size: 10px;
+  margin-top: 2px;
+}
