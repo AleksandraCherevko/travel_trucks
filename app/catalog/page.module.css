@@ -3,6 +3,7 @@
   padding-bottom: 52px;
   display: flex;
   gap: 64px;
+  justify-content: center;
 }
 
 .loadMoreBtn {
@@ -48,6 +49,7 @@
   width: 100%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   animation: fadeIn 0.3s ease-out;
+  text-align: center;
 }
 
 .noCampersFoundMessage {

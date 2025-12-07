@@ -13,7 +13,7 @@ type Props = {
 };
 
 const CamperDetails = async ({ params }: Props) => {
-  const { id } = params;
+  const { id } = await params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["camper", id],
